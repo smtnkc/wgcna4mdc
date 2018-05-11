@@ -1,0 +1,26 @@
+# 50400   oligonucleotides exist in GSE23561 peripheral blood gene expression dataset
+# 41082   rows remain after empty and invalid data are removed
+# 24280   rows remain after oligonucleotides grouped by gene symbol (group by mean)
+# 17562   gene symbols can be mapped with STRINGdb identifiers
+
+# 20457   proteins (nodes) exist in STRINGdb dataset
+# 19247   proteins are connected (have at least one link with another)
+# 17382   proteins are connected and can be mapped with GSE2361 genes
+# 14422   proteins are connected, mapped, and has a significant interaction (combined_score >= 700)
+
+# 4274001 interactions (edges) exist between all proteins in STRINGdb (9606__protein_links.tsv.gz)
+# 3745233 interactions exist between 17380 mapped proteins
+# 294287  interactions between the mapped proteins are significant (combined_score >= 700)
+
+# Insignificant relations (a > 0.05) are removed according to 2-tailed test table:
+# |Rho| = 0.886   for N = 6   -> RA, METS, CAD
+# |Rho| = 0.738   for N = 8   -> T2D
+# |Rho| = 0.700   for N = 9   -> CTRL
+
+# Number of edges (interactions) in resulting edgelists:
+# CTRL  294188 -> 96981
+# CAD   294188 -> 102971
+# RA    294188 -> 25770
+# METS  294188 -> 80172
+# T2D   294188 -> 74119
+
