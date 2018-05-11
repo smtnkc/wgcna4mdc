@@ -1,0 +1,2 @@
+DATA/*.csv filter=lfs diff=lfs merge=lfs -text
+DATA/*.tsv filter=lfs diff=lfs merge=lfs -text
