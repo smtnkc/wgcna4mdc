@@ -1,16 +1,23 @@
 # 50400   oligonucleotides exist in GSE23561 peripheral blood gene expression dataset
 # 41082   rows remain after empty and invalid data are removed
 # 24280   rows remain after oligonucleotides grouped by gene symbol (group by mean)
-# 17562   gene symbols can be mapped with STRINGdb identifiers
+# 17562   genes can be mapped with STRINGdb identifiers
+# 17382   genes has at least one plink according to STRINGdb topology
+# 14422   genes has a significant interaction (combined_score >= 700)
 
-# 20457   proteins (nodes) exist in STRINGdb dataset
-# 19247   proteins are connected (have at least one link with another)
-# 17382   proteins are connected and can be mapped with GSE2361 genes
-# 14422   proteins are connected, mapped, and has a significant interaction (combined_score >= 700)
+# 20457   proteins exist (nodes) in STRINGdb
+# 19247   proteins have at least one plink (PPI)
 
 # 4274001 interactions (edges) exist between all proteins in STRINGdb (9606__protein_links.tsv.gz)
 # 3745233 interactions exist between 17380 mapped proteins
-# 294287  interactions between the mapped proteins are significant (combined_score >= 700)
+# 294287  significant interactions exist between the mapped proteins (combined_score >= 700)
+
+# 541958400  edges  -> If all to all PPI between all genes in GSE23561        (24280 x 24280)
+# 418488849  edges  -> If all to all PPI between STRINGdb proteins            (20457 x 20457)
+# 308423844  edges  -> If all to all PPI between mapped genes                 (17562 x 17562)
+# 207994084  edges  -> If all to all PPI between genes with a significant PPI (14422 x 14422)
+# 3745233    edges  -> Between 17380 mapped genes
+# 294287     edges  -> Significant interactions between 17380 mapped genes	
 
 # Insignificant relations (a > 0.05) are removed according to 2-tailed test table:
 # |Rho| = 0.886   for N = 6   -> RA, METS, CAD
@@ -18,9 +25,9 @@
 # |Rho| = 0.700   for N = 9   -> CTRL
 
 # Number of edges (interactions) in resulting edgelists:
-# CTRL  294188 -> 96981
-# CAD   294188 -> 102971
-# RA    294188 -> 25770
-# METS  294188 -> 80172
-# T2D   294188 -> 74119
+# CTRL  294287 -> ?
+# CAD   294287 -> ?
+# RA    294287 -> ?
+# METS  294287 -> ?
+# T2D   294287 -> ?
 
