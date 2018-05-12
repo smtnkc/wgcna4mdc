@@ -4,6 +4,7 @@ library(data.table) # to read big tables
 library(STRINGdb) # to get STRING topology
 library(WGCNA) # to get correlation matrix
 library(org.Hs.eg.db) # to get entrez ids
+library(svMisc) # to show progress
 
 rm(list=ls())
 setwd(dirname(getSourceEditorContext()$path))

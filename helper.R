@@ -5,7 +5,7 @@ GetMapFor <- function(df.gse) {
   cat("Number of proteins:", nrow(strdb$get_proteins()), "\n")
   df.map <- as.data.frame(select(org.Hs.eg.db,
                                  keys = row.names(df.gse),
-                                 columns = c("ENTREZID", "SYMBOL"),
+                                 columns = c("ENTREZID", "ACCNUM", "SYMBOL"),
                                  keytype = "SYMBOL"))
 
   df.map <- strdb$map(df.map,
@@ -15,11 +15,23 @@ GetMapFor <- function(df.gse) {
                       quiet = FALSE)
 
   df.map <- df.map[!duplicated(df.map$SYMBOL), ]
-  df.map <- df.map[, -1]
+  df.map <- df.map[, c(3:4)]
   df.map <- df.map[!is.na(df.map$STRING_id), ]
   df.map <- df.map[!duplicated(df.map$STRING_id), ]
 
   return(df.map)
+}
+
+GetMapCor <- function(df.map, df.cor) {
+  df.map.cor <- df.cor[, c(1,2)]
+  df.map.cor[, "gene1"] <- NA
+  df.map.cor[, "gene2"] <- NA
+  for(i in 1:nrow(df.cor)) {
+    progress(i, nrow(df.cor), progress.bar = TRUE)
+    df.map.cor[i, "gene1"] <- df.map[df.map$STRING_id == df.cor[i, "protein1"], "SYMBOL"]
+    df.map.cor[i, "gene2"] <- df.map[df.map$STRING_id == df.cor[i, "protein2"], "SYMBOL"]
+  }
+  return(df.map.cor)
 }
 
 AppendCor <- function(df.plinks, df.gse, range, tool) {
@@ -37,6 +49,7 @@ AppendCor <- function(df.plinks, df.gse, range, tool) {
   df.result[, col] <- NA
 
   for(i in 1:nrow(df.plinks)) {
+    progress(i, nrow(df.plinks), progress.bar = TRUE)
     df.result[i, col] <- 
       df.adj[df.plinks[i, "protein1"], df.plinks[i, "protein2"]]
   }

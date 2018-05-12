@@ -25,7 +25,7 @@
 # |Rho| = 0.700   for N = 9   -> CTRL
 
 # Number of edges (interactions) in resulting edgelists:
-# CTRL  294287 -> ?
+# CTRL  294287 -> 92477
 # CAD   294287 -> ?
 # RA    294287 -> ?
 # METS  294287 -> ?
