@@ -27,7 +27,7 @@ GetMapCor <- function(df.map, df.cor) {
   df.map.cor[, "gene1"] <- NA
   df.map.cor[, "gene2"] <- NA
   for(i in 1:nrow(df.cor)) {
-    progress(i, nrow(df.cor), progress.bar = TRUE)
+    progress(i, nrow(df.cor))
     df.map.cor[i, "gene1"] <- df.map[df.map$STRING_id == df.cor[i, "protein1"], "SYMBOL"]
     df.map.cor[i, "gene2"] <- df.map[df.map$STRING_id == df.cor[i, "protein2"], "SYMBOL"]
   }
@@ -49,7 +49,7 @@ AppendCor <- function(df.plinks, df.gse, range, tool) {
   df.result[, col] <- NA
 
   for(i in 1:nrow(df.plinks)) {
-    progress(i, nrow(df.plinks), progress.bar = TRUE)
+    progress(i, nrow(df.plinks))
     df.result[i, col] <- 
       df.adj[df.plinks[i, "protein1"], df.plinks[i, "protein2"]]
   }
